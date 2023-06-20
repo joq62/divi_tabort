@@ -14,7 +14,7 @@
 
 %% API
 -export([
-	 d/2,
+	 divi/2,
 	 ping/0
 	]).
 
@@ -37,8 +37,8 @@
 %% @end
 %%--------------------------------------------------------------------
 
-d(A,B) ->
-    gen_server:call(?SERVER,{d,A,B},infinity).
+divi(A,B) ->
+    gen_server:call(?SERVER,{divi,A,B},infinity).
 ping() ->
     gen_server:call(?SERVER,{ping},infinity).
 
@@ -77,7 +77,7 @@ init([]) ->
 %% Handling call messages
 %% @end
 %%--------------------------------------------------------------------
-handle_call({d,A,B}, _From, State) ->
+handle_call({divi,A,B}, _From, State) ->
     Reply = A/B,
     {reply, Reply, State};
 handle_call({ping}, _From, State) ->

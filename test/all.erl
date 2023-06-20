@@ -25,7 +25,8 @@
 start()->
    
     ok=setup(),
-    ok=t1(),
+
+    42.0=divi:divi(420,10),
   
     io:format("Test OK !!! ~p~n",[?MODULE]),
     timer:sleep(2000),
@@ -37,12 +38,7 @@ start()->
 %% Description: Based on hosts.config file checks which hosts are avaible
 %% Returns: List({HostId,Ip,SshPort,Uid,Pwd}
 %% --------------------------------------------------------------------
-t1()->
-    io:format("Start ~p~n",[{?MODULE,?FUNCTION_NAME}]),
-    42.0=divi:d(420,10),
-    
-    ok.
-    
+
 %% --------------------------------------------------------------------
 %% Function: available_hosts()
 %% Description: Based on hosts.config file checks which hosts are avaible
@@ -55,8 +51,5 @@ setup()->
   
     ok=application:start(divi),
     pong=divi:ping(),
-    pong=common:ping(),
-    pong=sd:ping(),
-    pong=log:ping(),
-
+    42.0=sd:call(divi,divi,divi,[420,10],5000),
     ok.
